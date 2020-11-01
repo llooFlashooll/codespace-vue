@@ -6,5 +6,8 @@
 </template>
 
 <style>
-
+  #app {
+    max-width: 1640px;
+    margin: 0 auto;
+  }
 </style>
