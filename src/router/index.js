@@ -81,7 +81,34 @@ export const constantRoutes = [{
     component: () =>
       import ('@/views/dashboard/index'),
     name: 'Dashboard',
+<<<<<<< Updated upstream
     meta: { title: '首页', icon: 'dashboard', affix: true }
+=======
+    meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+  }]
+},
+{
+  path: '/documentation',
+  component: Layout,
+  children: [{
+    path: 'index',
+    component: () =>
+      import ('@/views/documentation/index'),
+    name: 'Documentation',
+    meta: { title: 'Documentation', icon: 'documentation', affix: true }
+  }]
+},
+{
+  path: '/guide',
+  component: Layout,
+  redirect: '/guide/index',
+  children: [{
+    path: 'index',
+    component: () =>
+      import ('@/views/guide/index'),
+    name: 'Guide',
+    meta: { title: 'Guide', icon: 'guide', noCache: true }
+>>>>>>> Stashed changes
   }]
 },
 {
@@ -96,6 +123,21 @@ export const constantRoutes = [{
     name: 'Profile',
     meta: { title: 'Profile', icon: 'user', noCache: true }
   }]
+<<<<<<< Updated upstream
+=======
+},
+{
+  path: '/article',
+  component: Layout,
+  redirect: '/article/index',
+  children: [{
+    path: 'index',
+    component: () =>
+      import('@/views/article/index'),
+    name: 'ArticleIndex',
+    meta: { title: 'Article/Blog', icon: 'education' }
+  }]
+>>>>>>> Stashed changes
 }
 ]
 
@@ -103,10 +145,34 @@ export const constantRoutes = [{
  * asyncRoutes
  * the routes that need to be dynamically loaded based on user roles
  */
+<<<<<<< Updated upstream
 export const asyncRoutes = [
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
+=======
+export const asyncRoutes = [{
+  path: '/permission',
+  component: Layout,
+  redirect: '/permission/page',
+  alwaysShow: true, // will always show the root menu
+  name: 'Permission',
+  meta: {
+    title: 'Permission',
+    icon: 'lock',
+    roles: ['admin', 'editor'] // you can set roles in root nav
+  }
+},
+
+/** when your routing map is too long, you can split it into small modules **/
+// componentsRouter,
+// chartsRouter,
+// nestedRouter,
+// tableRouter,
+
+// 404 page must be placed at the end !!!
+{ path: '*', redirect: '/404', hidden: true }
+>>>>>>> Stashed changes
 ]
 
 const createRouter = () => new Router({
