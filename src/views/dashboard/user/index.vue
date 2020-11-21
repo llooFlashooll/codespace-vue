@@ -1,14 +1,21 @@
 <template>
   <div class="dashboard-editor-container">
-    <github-corner class="github-corner" />
+
+    <!-- 走马灯用于播放图片 -->
+    <el-carousel :interval="4000" type="card" height="200px">
+      <el-carousel-item v-for="item in 3" :key="item">
+        <h3 class="medium">{{ item }}</h3>
+      </el-carousel-item>
+    </el-carousel>
 
     <panel-group @handleSetLineChartData="handleSetLineChartData" />
 
-    <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
+    <el-row class="dashboard-chart-container">
       <line-chart :chart-data="lineChartData" />
     </el-row>
 
-    <el-row :gutter="32">
+    <!-- 饼状图 -->
+    <!--     <el-row :gutter="32">
       <el-col :xs="24" :sm="24" :lg="8">
         <div class="chart-wrapper">
           <raddar-chart />
@@ -24,12 +31,12 @@
           <bar-chart />
         </div>
       </el-col>
-    </el-row>
+    </el-row> -->
 
     <el-row :gutter="8">
-      <el-col :xs="{span: 24}" :sm="{span: 24}" :md="{span: 24}" :lg="{span: 12}" :xl="{span: 12}" style="padding-right:8px;margin-bottom:30px;">
+      <!--       <el-col :xs="{span: 24}" :sm="{span: 24}" :md="{span: 24}" :lg="{span: 12}" :xl="{span: 12}" style="padding-right:8px;margin-bottom:30px;">
         <transaction-table />
-      </el-col>
+      </el-col> -->
       <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="margin-bottom:30px;">
         <todo-list />
       </el-col>
@@ -37,6 +44,15 @@
         <box-card />
       </el-col>
     </el-row>
+
+    <!-- 添加卡片记录状态 -->
+    <el-card v-for="(item,index) in news" :key="index" class="box-card" style="margin-bottom: 20px">
+      <div slot="header" class="clearfix">
+        <span>{{ item.title }} - {{ item.username }}</span>
+        <span style="float: right">{{ item.time }}</span>
+      </div>
+      <div v-html="item.content" />
+    </el-card>
   </div>
 </template>
 
@@ -44,12 +60,14 @@
 import GithubCorner from '@/components/GithubCorner'
 import PanelGroup from './components/PanelGroup'
 import LineChart from './components/LineChart'
-import RaddarChart from './components/RaddarChart'
-import PieChart from './components/PieChart'
-import BarChart from './components/BarChart'
-import TransactionTable from './components/TransactionTable'
+// import RaddarChart from './components/RaddarChart'
+// import PieChart from './components/PieChart'
+// import BarChart from './components/BarChart'
+// import TransactionTable from './components/TransactionTable'
 import TodoList from './components/TodoList'
 import BoxCard from './components/BoxCard'
+
+// 可以添加后端获取访问数据api，用于显示
 
 const lineChartData = {
   newVisitis: {
@@ -71,15 +89,15 @@ const lineChartData = {
 }
 
 export default {
-  name: 'DashboardAdmin',
+  name: 'DashboardUser',
   components: {
-    GithubCorner,
+    // GithubCorner,
     PanelGroup,
     LineChart,
-    RaddarChart,
-    PieChart,
-    BarChart,
-    TransactionTable,
+    // RaddarChart,
+    // PieChart,
+    // BarChart,
+    // TransactionTable,
     TodoList,
     BoxCard
   },
@@ -97,6 +115,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.dashboard-chart-container {
+  background:#fff;
+  padding:16px 16px 0;
+  margin-bottom:32px;
+}
 .dashboard-editor-container {
   padding: 32px;
   background-color: rgb(240, 242, 245);
@@ -120,5 +143,21 @@ export default {
   .chart-wrapper {
     padding: 8px;
   }
+}
+
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n+1) {
+  background-color: #d3dce6;
 }
 </style>

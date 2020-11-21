@@ -5,27 +5,28 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import adminDashboard from './admin'
-import editorDashboard from './editor'
+// 可以选择多个用户
+// import { mapGetters } from 'vuex'
+// import adminDashboard from './admin'
+import userDashboard from './user'
 
 export default {
   name: 'Dashboard',
-  components: { adminDashboard, editorDashboard },
+  components: { userDashboard },
   data() {
     return {
-      currentRole: 'adminDashboard'
+      currentRole: 'userDashboard'
     }
   },
   computed: {
-    ...mapGetters([
-      'roles'
-    ])
+    // ...mapGetters([
+    //   'roles'
+    // ])
   },
   created() {
-    if (!this.roles.includes('admin')) {
-      this.currentRole = 'editorDashboard'
-    }
+    // if (!this.roles.includes('admin')) {
+    //   this.currentRole = 'editorDashboard'
+    // }
   }
 }
 </script>
