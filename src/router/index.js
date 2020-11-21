@@ -96,6 +96,18 @@ export const constantRoutes = [{
     name: 'Profile',
     meta: { title: 'Profile', icon: 'user', noCache: true }
   }]
+},
+{
+  path: '/article',
+  component: Layout,
+  redirect: '/article/index',
+  children: [{
+    path: 'index',
+    component: () =>
+      import ('@/views/article/index'),
+    name: 'Article',
+    meta: { title: 'Article', icon: 'education' }
+  }]
 }
 ]
 
