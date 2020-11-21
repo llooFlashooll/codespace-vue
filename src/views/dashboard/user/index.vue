@@ -2,7 +2,7 @@
   <div class="dashboard-editor-container">
 
     <!-- 走马灯用于播放图片 -->
-    <el-carousel :interval="4000" type="card" height="200px">
+    <el-carousel :interval="4000" type="card" height="300px">
       <el-carousel-item v-for="item in 3" :key="item">
         <h3 class="medium">{{ item }}</h3>
       </el-carousel-item>
@@ -103,7 +103,8 @@ export default {
   },
   data() {
     return {
-      lineChartData: lineChartData.newVisitis
+      lineChartData: lineChartData.newVisitis,
+      // 浏览器宽度
     }
   },
   methods: {
