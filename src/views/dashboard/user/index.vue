@@ -3,8 +3,8 @@
 
     <!-- 走马灯用于播放图片 -->
     <el-carousel :interval="4000" type="card" height="300px">
-      <el-carousel-item v-for="item in 3" :key="item">
-        <h3 class="medium">{{ item }}</h3>
+      <el-carousel-item v-for="item in list_img" :key="item">
+        <img ref="imgHeight" :src="item.url" width="100%" height="100%" object-fit="cover">
       </el-carousel-item>
     </el-carousel>
 
@@ -14,29 +14,7 @@
       <line-chart :chart-data="lineChartData" />
     </el-row>
 
-    <!-- 饼状图 -->
-    <!--     <el-row :gutter="32">
-      <el-col :xs="24" :sm="24" :lg="8">
-        <div class="chart-wrapper">
-          <raddar-chart />
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :lg="8">
-        <div class="chart-wrapper">
-          <pie-chart />
-        </div>
-      </el-col>
-      <el-col :xs="24" :sm="24" :lg="8">
-        <div class="chart-wrapper">
-          <bar-chart />
-        </div>
-      </el-col>
-    </el-row> -->
-
     <el-row :gutter="8">
-      <!--       <el-col :xs="{span: 24}" :sm="{span: 24}" :md="{span: 24}" :lg="{span: 12}" :xl="{span: 12}" style="padding-right:8px;margin-bottom:30px;">
-        <transaction-table />
-      </el-col> -->
       <el-col :xs="{span: 24}" :sm="{span: 12}" :md="{span: 12}" :lg="{span: 6}" :xl="{span: 6}" style="margin-bottom:30px;">
         <todo-list />
       </el-col>
@@ -60,10 +38,6 @@
 import GithubCorner from '@/components/GithubCorner'
 import PanelGroup from './components/PanelGroup'
 import LineChart from './components/LineChart'
-// import RaddarChart from './components/RaddarChart'
-// import PieChart from './components/PieChart'
-// import BarChart from './components/BarChart'
-// import TransactionTable from './components/TransactionTable'
 import TodoList from './components/TodoList'
 import BoxCard from './components/BoxCard'
 
@@ -91,20 +65,24 @@ const lineChartData = {
 export default {
   name: 'DashboardUser',
   components: {
-    // GithubCorner,
     PanelGroup,
     LineChart,
-    // RaddarChart,
-    // PieChart,
-    // BarChart,
-    // TransactionTable,
     TodoList,
     BoxCard
   },
   data() {
     return {
       lineChartData: lineChartData.newVisitis,
-      // 浏览器宽度
+
+      list_img: [
+        { url: require('../../../assets/imagebox/carousel1.jpg')},
+        { url: require('../../../assets/imagebox/carousel2.png')},
+        { url: require('../../../assets/imagebox/carousel3.png')},
+        { url: require('../../../assets/imagebox/carousel4.png')},
+        { url: require('../../../assets/imagebox/carousel5.jpg')},
+        { url: require('../../../assets/imagebox/carousel6.jpg')},
+        { url: require('../../../assets/imagebox/carousel7.png')}
+      ]
     }
   },
   methods: {
