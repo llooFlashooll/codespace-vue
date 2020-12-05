@@ -104,43 +104,54 @@ export const constantRoutes = [{
  * the routes that need to be dynamically loaded based on user roles
  */
 export const asyncRoutes = [{
-  path: '/article',
-  component: Layout,
-  redirect: '/article/index',
-  children: [{
-    path: 'index',
-    component: () =>
-      import ('@/views/article/index'),
-    name: 'Article',
-    meta: { title: '文章', icon: 'education' }
-  }]
-},
-{
   path: '/problem',
   component: Layout,
-  redirect: '/problem/list',
-  meta: { title: '问题中心', icon: 'problem' },
+  redirect: '/problem/problemList',
   children: [{
-    path: 'list',
+    path: 'problemList',
     component: () =>
-      import ('@/views/problem/list'),
-    name: 'ProblemList',
-    meta: { title: '提交', activeMenu: '/problems/list' },
+      import ('@/views/problem/ProblemList'),
+    name: 'problemList',
+    meta: { title: '问题', icon: 'problem' }
+  },
+  {
+    path: 'problem',
+    component: () =>
+      import ('@/views/problem/Problem'),
+    name: 'problem',
+    meta: { title: '问题详情', icon: 'problem' },
     hidden: true
-  }]
+  },
+  {
+    path: 'submit',
+    component: () =>
+      import ('@/views/problem/Submit'),
+    name: 'submit',
+    meta: { title: '问题提交', icon: 'problem' },
+    hidden: true
+  }
+  ]
 },
 {
   path: '/status',
   component: Layout,
-  redirect: '/status/index',
-  meta: { title: '判题中心', icon: 'skill' },
+  redirect: '/status',
   children: [{
-    path: 'index',
+    path: '',
     component: () =>
-      import ('@/views/status/index'),
-    name: 'Status',
-    meta: { title: '状态', icon: 'skill' }
-  }]
+      import ('@/views/status/Status'),
+    name: 'status',
+    meta: { title: '提交状态', icon: 'skill' }
+  },
+  {
+    path: 'code',
+    component: () =>
+      import ('@/views/status/Code'),
+    name: 'code',
+    meta: { title: '完整代码', icon: 'skill' },
+    hidden: true
+  }
+  ]
 },
 // 404 page must be placed at the end !!!
 { path: '*', redirect: '/404', hidden: true }

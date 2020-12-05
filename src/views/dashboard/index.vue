@@ -19,14 +19,10 @@ export default {
     }
   },
   computed: {
-    // ...mapGetters([
-    //   'roles'
-    // ])
+
   },
   created() {
-    // if (!this.roles.includes('admin')) {
-    //   this.currentRole = 'editorDashboard'
-    // }
+
   }
 }
 </script>
