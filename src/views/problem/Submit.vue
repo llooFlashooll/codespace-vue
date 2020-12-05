@@ -72,7 +72,7 @@ export default {
                 '' +
                 response.data.data.error)
           this.$router.push({
-            path: 'status'
+            path: '/status'
           }
           )
         })
