@@ -83,19 +83,6 @@ export const constantRoutes = [{
     name: '首页',
     meta: { title: '首页', icon: 'dashboard', affix: true }
   }]
-},
-{
-  path: '/profile',
-  component: Layout,
-  redirect: '/profile/index',
-  hidden: true,
-  children: [{
-    path: 'index',
-    component: () =>
-      import ('@/views/profile/index'),
-    name: 'Profile',
-    meta: { title: 'Profile', icon: 'user', noCache: true }
-  }]
 }
 ]
 
@@ -191,6 +178,35 @@ export const asyncRoutes = [{
     hidden: true
   }]
 },
+{
+  path: '/profile',
+  component: Layout,
+  redirect: '/profile/user',
+  meta: { title: '用户中心', icon: 'example' },
+  children: [{
+    path: 'user',
+    component: () =>
+      import ('@/views/profile/User'),
+    name: 'user',
+    meta: { title: '用户信息', icon: '' }
+  },
+  {
+    path: 'userStatus',
+    component: () =>
+      import ('@/views/profile/UserStatus'),
+    name: 'userStatus',
+    meta: { title: '提交记录', icon: '' }
+  },
+  {
+    path: 'userBlogList',
+    component: () =>
+      import ('@/views/profile/UserBlogList'),
+    name: 'userBlogList',
+    meta: { title: '个人博客', icon: '' }
+  }
+  ]
+},
+
 // 404 page must be placed at the end !!!
 { path: '*', redirect: '/404', hidden: true }
 ]
