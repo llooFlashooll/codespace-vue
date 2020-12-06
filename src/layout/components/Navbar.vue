@@ -38,7 +38,12 @@
           <a target="_blank" href="https://space.bilibili.com/383431110">
             <el-dropdown-item>关注我</el-dropdown-item>
           </a>
-          <el-dropdown-item divided @click.native="logout">
+          <el-dropdown-item divided @click.native="logoutAccount">
+            <span style="display:block;">退出登录</span>
+          </el-dropdown-item>
+
+          <!-- 将原来的逻辑隐藏，重新写一个简易的 -->
+          <el-dropdown-item v-if="false" divided @click.native="logout">
             <span style="display:block;">退出登录</span>
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -79,6 +84,15 @@ export default {
     async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    },
+    async logoutAccount() {
+      sessionStorage.setItem('isLogin', false)
+      sessionStorage.removeItem('userid')
+
+      alert('Farewell~')
+      this.$router.push({
+        path: '/user/login'
+      })
     }
   }
 }

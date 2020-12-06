@@ -158,7 +158,7 @@ export const asyncRoutes = [{
   component: Layout,
   redirect: '/blog/blogList',
   children: [{
-    path: '',
+    path: 'blogList',
     component: () =>
       import ('@/views/blog/BlogList'),
     name: 'blogList',
@@ -176,6 +176,18 @@ export const asyncRoutes = [{
       import ('@/views/blog/BlogDetail'),
     name: 'blogDetail',
     meta: { title: '博客详情', icon: 'education' },
+    hidden: true
+  }]
+},
+{
+  path: '/user',
+  component: () =>
+    import ('@/views/user/Login'),
+  redirect: '/user/login',
+  children: [{
+    path: 'login',
+    name: 'userLogin',
+    meta: { title: '登录', icon: '' },
     hidden: true
   }]
 },
