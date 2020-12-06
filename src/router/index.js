@@ -153,6 +153,32 @@ export const asyncRoutes = [{
   }
   ]
 },
+{
+  path: '/blog',
+  component: Layout,
+  redirect: '/blog/blogList',
+  children: [{
+    path: '',
+    component: () =>
+      import ('@/views/blog/BlogList'),
+    name: 'blogList',
+    meta: { title: '博客', icon: 'education' }
+  }, {
+    path: 'edit',
+    component: () =>
+      import ('@/views/blog/BlogEdit'),
+    name: 'edit',
+    meta: { title: '博客编辑', icon: 'education' },
+    hidden: true
+  }, {
+    path: 'blogDetail',
+    component: () =>
+      import ('@/views/blog/BlogDetail'),
+    name: 'blogDetail',
+    meta: { title: '博客详情', icon: 'education' },
+    hidden: true
+  }]
+},
 // 404 page must be placed at the end !!!
 { path: '*', redirect: '/404', hidden: true }
 ]
