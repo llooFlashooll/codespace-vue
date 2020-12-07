@@ -194,23 +194,35 @@ export const asyncRoutes = [{
     component: () =>
       import ('@/views/profile/User'),
     name: 'user',
-    meta: { title: '用户信息', icon: '' }
+    meta: { title: '用户信息', icon: 'peoples' }
   },
   {
     path: 'userStatus',
     component: () =>
       import ('@/views/profile/UserStatus'),
     name: 'userStatus',
-    meta: { title: '提交记录', icon: '' }
+    meta: { title: '提交记录', icon: 'edit' }
   },
   {
     path: 'userBlogList',
     component: () =>
       import ('@/views/profile/UserBlogList'),
     name: 'userBlogList',
-    meta: { title: '个人博客', icon: '' }
+    meta: { title: '个人博客', icon: 'list' }
   }
   ]
+},
+{
+  path: '/news',
+  component: Layout,
+  redirect: '/news/newsList',
+  children: [{
+    path: 'newsList',
+    component: () =>
+      import ('@/views/news/News'),
+    name: 'newsList',
+    meta: { title: '极客资讯', icon: 'documentation' }
+  }]
 },
 
 // 404 page must be placed at the end !!!

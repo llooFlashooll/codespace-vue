@@ -36,6 +36,16 @@ module.exports = {
             warnings: false,
             errors: true
         },
+        proxy: {
+            [process.env.VUE_APP_BASE_API]: {
+                target: 'https://www.wanandroid.com', // 接口域名
+                secure: false, // 如果是https接口，需要配置这个参数
+                changeOrigin: true, // 是否跨域，如果为true，请求的header将会设置为匹配目标服务的规则（Access-Control-Allow-Origin）
+                pathRewrite: {
+                    ['^' + process.env.VUE_APP_BASE_API]: ''
+                }
+            },
+        },
         before: require('./mock/mock-server.js')
     },
     configureWebpack: {
