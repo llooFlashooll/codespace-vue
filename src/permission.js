@@ -10,6 +10,19 @@ NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
 const whiteList = ['/login', '/auth-redirect'] // no redirect whitelist
 
+// 新的逻辑，直接首页拦截
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth) {
+    if (sessionStorage.getItem('userid')) {
+      next()
+    } else {
+      next({ path: '/user/login' })
+    }
+  } else {
+    next()
+  }
+})
+
 router.beforeEach(async(to, from, next) => {
   // start progress bar
   NProgress.start()

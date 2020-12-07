@@ -81,7 +81,24 @@ export const constantRoutes = [{
     component: () =>
       import ('@/views/dashboard/index'),
     name: '首页',
-    meta: { title: '首页', icon: 'dashboard', affix: true }
+    meta: {
+      title: '首页',
+      icon: 'dashboard',
+      affix: true,
+      requireAuth: true
+    }
+  }]
+},
+{
+  path: '/user',
+  component: () =>
+    import ('@/views/user/Login'),
+  redirect: '/user/login',
+  children: [{
+    path: 'login',
+    name: 'userLogin',
+    meta: { title: '登录', icon: '' },
+    hidden: true
   }]
 }
 ]
@@ -166,18 +183,7 @@ export const asyncRoutes = [{
     hidden: true
   }]
 },
-{
-  path: '/user',
-  component: () =>
-    import ('@/views/user/Login'),
-  redirect: '/user/login',
-  children: [{
-    path: 'login',
-    name: 'userLogin',
-    meta: { title: '登录', icon: '' },
-    hidden: true
-  }]
-},
+
 {
   path: '/profile',
   component: Layout,
