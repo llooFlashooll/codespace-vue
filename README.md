@@ -31,3 +31,5 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+Tips: 套用vue admin element模板，代码很多冗余，部署路由也复杂，较耗时。T_T
